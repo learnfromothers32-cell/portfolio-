@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:      #060608;
+  --bg2:     #0d0d10;
+  --bg3:     #111116;
+  --surface: #14141a;
+  --border:  #1e1e26;
+  --border2: #2a2a36;
+  --green:   #00ff87;
+  --green2:  #00cc6a;
+  --cyan:    #00d4ff;
+  --text:    #e2e2e8;
+  --muted:   #6b6b7a;
+  --muted2:  #4a4a58;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Scanline effect */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid background */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 135, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 135, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* Selection */
+::selection { background: var(--green); color: var(--bg); }
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-green px-7 py-3 font-mono text-xs tracking-widest uppercase font-bold transition-all duration-200;
+    background-color: var(--green);
+    color: var(--bg);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover {
+    @apply -translate-y-px;
+    background-color: var(--cyan);
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-border-2 px-7 py-3 font-mono text-xs tracking-widest uppercase transition-all duration-200;
+    border-color: var(--border2);
+    color: var(--muted);
+  }
+  .btn-outline:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .section-tag {
+    @apply text-xs tracking-widest uppercase mb-3 flex items-center gap-3;
+    color: var(--green);
+  }
+  .section-tag::before {
+    content: '//';
+    color: var(--muted2);
+  }
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-bold leading-tight tracking-tight;
+    color: var(--text);
+  }
+  .section-line {
+    @apply w-12 h-0.5 mt-4;
+    background-color: var(--green);
+  }
+  .container-custom {
+    @apply max-w-6xl mx-auto px-8;
+  }
+}
