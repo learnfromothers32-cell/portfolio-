@@ -8,30 +8,16 @@ server/node_modules/
 .env.local
 .env.production
 
-# Build outputs
-dist/
-build/
+# Build output
 client/dist/
-server/dist/
-
-# Docker
-.dockerignore
+client/build/
 
 # Logs
 *.log
 npm-debug.log*
 
-# OS files
+# Docker
+.dockerignore
+
+# OS
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# TypeScript
-*.tsbuildinfo
-
-# Temporary files
-*.tmp
-*.temp
