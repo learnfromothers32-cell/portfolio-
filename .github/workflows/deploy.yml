@@ -27,4 +27,4 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-backend:latest
 
       - name: Trigger Render Deploy
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }} 
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
