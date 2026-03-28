@@ -1,0 +1,26 @@
+# render.yaml
+services:
+  # Backend API
+  - type: web
+    name: portfolio-api
+    runtime: node
+    plan: free
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: PORT
+        value: 5000
+
+  # Frontend Static
+  - type: static
+    name: portfolio-client
+    runtime: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://portfolio-api.onrender.com
