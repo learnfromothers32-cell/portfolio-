@@ -10,7 +10,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false)
-  const [menuOpen, setMenuOpen]   = useState(false)
+  const [, setMenuOpen] = useState(false)
   const [active,   setActive]     = useState('')
 
   useEffect(() => {
